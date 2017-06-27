@@ -7,20 +7,50 @@
 //
 
 import UIKit
+import CoreMotion
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
 
-    override func viewDidLoad() {
+    let pedometer = CMPedometer()
+    
+    var currentDate: Date {
+        return Date()
+    }
+    
+    var oldestDate: Date? {
+        var timeInterval = DateComponents()
+        timeInterval.day = -10
+        let dateTenDaysAgo = Calendar.current.date(byAdding: timeInterval, to: Date())
+        return dateTenDaysAgo
+    }
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        print()
+        
+        self.pedometer.queryPedometerData(from: self.oldestDate!, to: self.currentDate, withHandler: { (data, error) -> Void in
+            if let data = data
+            {
+                print("Data: \(data)")
+            } else if let error = error {
+                print("Error: \(error)")
+            }
+        })
+        
+        // Note: use simulated data for unsupported devices
+        
+        // Check if current device is supported
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
