@@ -24,7 +24,6 @@ class MotionService
             return
         }
         
-        self.dataArr = Array<CMPedometerData>(repeating: CMPedometerData(), count: numberOfPreviousDays)
         var fromDate = date
         let yesterday = self.calendar.date(byAdding: .day, value: -1, to: Date())!
         
@@ -55,7 +54,6 @@ class MotionService
                 return
             }
             self?.dataArr.insert(data, at: 0)
-            print("\(data)")
             dispatchGroup.leave()
         })
     }
