@@ -14,6 +14,9 @@
 		920B13321F01DBE100656A54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920B13301F01DBE100656A54 /* LaunchScreen.storyboard */; };
 		920B133D1F01DBE100656A54 /* TenDayStepCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B133C1F01DBE100656A54 /* TenDayStepCounterTests.swift */; };
 		920B13481F01DBE100656A54 /* TenDayStepCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920B13471F01DBE100656A54 /* TenDayStepCounterUITests.swift */; };
+		922D6D451F01F5E00056AD8E /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D6D441F01F5E00056AD8E /* MotionService.swift */; };
+		922D6D461F01F5E00056AD8E /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D6D441F01F5E00056AD8E /* MotionService.swift */; };
+		922D6D471F01F5E00056AD8E /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D6D441F01F5E00056AD8E /* MotionService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		920B13431F01DBE100656A54 /* TenDayStepCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenDayStepCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		920B13471F01DBE100656A54 /* TenDayStepCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenDayStepCounterUITests.swift; sourceTree = "<group>"; };
 		920B13491F01DBE100656A54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922D6D441F01F5E00056AD8E /* MotionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				920B132E1F01DBE100656A54 /* Assets.xcassets */,
 				920B13301F01DBE100656A54 /* LaunchScreen.storyboard */,
 				920B13331F01DBE100656A54 /* Info.plist */,
+				922D6D441F01F5E00056AD8E /* MotionService.swift */,
 			);
 			path = TenDayStepCounter;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			files = (
 				920B132A1F01DBE100656A54 /* ViewController.swift in Sources */,
 				920B13281F01DBE100656A54 /* AppDelegate.swift in Sources */,
+				922D6D451F01F5E00056AD8E /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				920B133D1F01DBE100656A54 /* TenDayStepCounterTests.swift in Sources */,
+				922D6D461F01F5E00056AD8E /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				920B13481F01DBE100656A54 /* TenDayStepCounterUITests.swift in Sources */,
+				922D6D471F01F5E00056AD8E /* MotionService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +522,7 @@
 				920B134E1F01DBE100656A54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		920B134F1F01DBE100656A54 /* Build configuration list for PBXNativeTarget "TenDayStepCounterTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +531,7 @@
 				920B13511F01DBE100656A54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		920B13521F01DBE100656A54 /* Build configuration list for PBXNativeTarget "TenDayStepCounterUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +540,7 @@
 				920B13541F01DBE100656A54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
