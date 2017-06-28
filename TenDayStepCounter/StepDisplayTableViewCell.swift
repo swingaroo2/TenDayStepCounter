@@ -19,6 +19,7 @@ class StepDisplayTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.accessoryType = .disclosureIndicator
         // Initialization code
     }
 
@@ -43,7 +44,7 @@ class StepDisplayTableViewCell: UITableViewCell {
         self.stepData = data
         self.stepsLabel?.text = data.numberOfSteps.description
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
-        self.dateLabel?.text = self.getFormattedStartDate(data.startDate)
+        self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
     
     func getFormattedDistance(_ distance:NSNumber?) -> String?
@@ -54,7 +55,7 @@ class StepDisplayTableViewCell: UITableViewCell {
         }
         
         let formattedDistance = Int(floor(distance.doubleValue)).description
-        let fullString = "\(formattedDistance) mi"
+        let fullString = "\(formattedDistance) m"
         return fullString
     }
     

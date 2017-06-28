@@ -11,57 +11,74 @@ import CoreMotion
 
 class MotionService
 {
-    let calendar  = Calendar.current
-    let pedometer = CMPedometer()
+    var calendar:Calendar {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "GMT")!
+        return calendar
+    }
+
     var dataArr: Array<CMPedometerData> = []
+    let pedometer = CMPedometer()
     let queue = DispatchQueue(label: "StepCounterQueue", attributes: DispatchQueue.Attributes.concurrent)
     
-    func getDailyStepDataUntilToday(numberOfPreviousDays:Int, dispatchGroup:DispatchGroup)
+    func getDailyStepDataUntilToday(numberOfDays:Int, dispatchGroup:DispatchGroup)
     {
-        guard let date = self.getDateForPastDay(numDaysAgo: numberOfPreviousDays) else
-        {
-            NSLog("\(#function): Failed to query data with nil Date")
-            return
-        }
         
-        var fromDate = date
-        let yesterday = self.calendar.date(byAdding: .day, value: -1, to: Date())!
-        
-        while fromDate < yesterday
+        for numberOfDaysInLoop in 0...(numberOfDays-1)
         {
-            guard let toDate = self.calendar.date(byAdding: .day, value: 1, to: fromDate) else
+
+            guard let endDate = self.getEndDateForQueryRange(numDaysAgo: numberOfDaysInLoop) else
             {
-                NSLog("\(#function): Failed to get previous day's date")
+                NSLog("\(#function): Failed to get end date for query")
                 return
             }
-            self.getStepDataForDates(fromDate, end: toDate, dispatchGroup: dispatchGroup)
             
-            fromDate = toDate
+            guard let startDate = self.getStartDateForQueryRange(endDate) else
+            {
+                NSLog("\(#function): Failed to get start date for query")
+                return
+            }
+            
+            self.getStepDataForDates(startDate, end: endDate, dispatchGroup: dispatchGroup)
         }
     }
     
     private func getStepDataForDates(_ start:Date, end:Date, dispatchGroup:DispatchGroup)
     {
         dispatchGroup.enter()
-        self.pedometer.queryPedometerData(from: start, to: end, withHandler: { [weak self] (data, error) -> Void in
+        self.pedometer.queryPedometerData(from: end, to: start, withHandler: { [weak self] (data, error) -> Void in
             guard let data = data else
             {
                 if let error = error
                 {
-                    NSLog(error.localizedDescription)
+                    NSLog("\(#function): Error: \(error.localizedDescription)")
                 }
-                NSLog("\(#function): Failed to get step data with error")
                 return
             }
-            self?.dataArr.insert(data, at: 0)
+
+            self?.dataArr.append(data)
             dispatchGroup.leave()
         })
     }
     
-    private func getDateForPastDay(numDaysAgo:Int) -> Date?
+    private func getEndDateForQueryRange(numDaysAgo:Int) -> Date?
     {
-        let date = Date()
-        let pastDate = self.calendar.date(byAdding: .day, value: -numDaysAgo, to: date)
-        return pastDate
+        guard let endDate = self.calendar.date(byAdding: .day, value: -numDaysAgo, to: Date()) else
+        {
+            NSLog("\(#function): Failed to get end date for query range")
+            return nil
+        }
+        
+        let toDateFormatted = self.calendar.startOfDay(for: endDate)
+        return toDateFormatted
+    }
+    
+    private func getStartDateForQueryRange(_ date:Date) -> Date?
+    {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        let startDate = self.calendar.date(byAdding: components, to: date)
+        return startDate
     }
 }

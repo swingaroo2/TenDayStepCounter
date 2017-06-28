@@ -30,9 +30,10 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.setUpTableView()
         
-        self.motionService.getDailyStepDataUntilToday(numberOfPreviousDays: Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
+        self.motionService.getDailyStepDataUntilToday(numberOfDays: Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
         
         self.dispatchGroup.notify(queue: DispatchQueue.main, execute:{ [weak self] in
+            self?.tableView?.tableFooterView = UIView()
             self?.tableView?.delegate = self
             self?.tableView?.dataSource = self
             self?.tableView?.reloadData()
@@ -48,9 +49,15 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         print("Selected row at index path: \(indexPath)")
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: UITableViewDataSource
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // Would localize string if I had the resources for it
+        return "Steps"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return Constants.numPreviousDays
