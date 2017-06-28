@@ -42,9 +42,20 @@ class StepDisplayTableViewCell: UITableViewCell {
         
         self.stepData = data
         self.stepsLabel?.text = data.numberOfSteps.description
-        self.distanceLabel?.text = data.distance?.description
+        self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.startDate)
-        print("\(#function): Configured step data cell")
+    }
+    
+    func getFormattedDistance(_ distance:NSNumber?) -> String?
+    {
+        guard let distance = distance else
+        {
+            return nil
+        }
+        
+        let formattedDistance = Int(floor(distance.doubleValue)).description
+        let fullString = "\(formattedDistance) mi"
+        return fullString
     }
     
     func getFormattedStartDate(_ date:Date) -> String

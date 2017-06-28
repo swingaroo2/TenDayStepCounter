@@ -62,7 +62,6 @@ class MotionService
     {
         let date = Date()
         let pastDate = self.calendar.date(byAdding: .day, value: -numDaysAgo, to: date)
-        print("\(pastDate!)")
         return pastDate
     }
 }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,48 +18,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="STEPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4R-sP-ONJ">
-                        <rect key="frame" x="8" y="11" width="59" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="59" id="0w1-VH-hyw"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD7-14-ugu">
-                        <rect key="frame" x="144" y="11" width="37" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="37" id="fJg-kf-irC"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTo-7F-atJ">
-                        <rect key="frame" x="270" y="11" width="42" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="42" id="c4D-U0-8P6"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Nr6-nB-Udw">
+                        <rect key="frame" x="20" y="0.0" width="280" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="STEPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dh-Nu-dsq">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="49a-CU-dh9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVI-fq-JXG">
+                                <rect key="frame" x="100" y="0.0" width="80" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Axt-Ga-heE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLo-g8-73n">
+                                <rect key="frame" x="200" y="0.0" width="80" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ZO7-Q3-nrB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JTo-7F-atJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ge1-tc-btn"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="Y4R-sP-ONJ" secondAttribute="leading" id="Teg-4c-zDg"/>
-                    <constraint firstItem="bD7-14-ugu" firstAttribute="leading" secondItem="Y4R-sP-ONJ" secondAttribute="trailing" constant="77" id="aTx-xE-hh2"/>
-                    <constraint firstItem="Y4R-sP-ONJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mTv-6Y-s77"/>
-                    <constraint firstItem="bD7-14-ugu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rI9-9Z-7ie"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="JTo-7F-atJ" secondAttribute="trailing" id="xaf-0D-Cfs"/>
-                    <constraint firstItem="JTo-7F-atJ" firstAttribute="leading" secondItem="bD7-14-ugu" secondAttribute="trailing" constant="89" id="ydY-wM-03t"/>
+                    <constraint firstAttribute="trailing" secondItem="Nr6-nB-Udw" secondAttribute="trailing" constant="20" id="4cl-gx-efc"/>
+                    <constraint firstItem="Nr6-nB-Udw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fuF-x7-8qE"/>
+                    <constraint firstAttribute="bottom" secondItem="Nr6-nB-Udw" secondAttribute="bottom" id="jcq-2A-Usp"/>
+                    <constraint firstItem="Nr6-nB-Udw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="v7M-2c-buN"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dateLabel" destination="JTo-7F-atJ" id="Hvx-yj-UVB"/>
-                <outlet property="distanceLabel" destination="bD7-14-ugu" id="Y0x-RO-nCt"/>
-                <outlet property="stepsLabel" destination="Y4R-sP-ONJ" id="XBl-Ei-O3C"/>
+                <outlet property="dateLabel" destination="LLo-g8-73n" id="Q0u-5g-4Zn"/>
+                <outlet property="distanceLabel" destination="hVI-fq-JXG" id="teI-D2-VVK"/>
+                <outlet property="stepsLabel" destination="2dh-Nu-dsq" id="zk6-3a-DnI"/>
             </connections>
             <point key="canvasLocation" x="44" y="59"/>
         </tableViewCell>

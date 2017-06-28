@@ -33,7 +33,6 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         self.motionService.getDailyStepDataUntilToday(numberOfPreviousDays: Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
         
         self.dispatchGroup.notify(queue: DispatchQueue.main, execute:{ [weak self] in
-            print("===Refresh table view===")
             self?.tableView?.delegate = self
             self?.tableView?.dataSource = self
             self?.tableView?.reloadData()
