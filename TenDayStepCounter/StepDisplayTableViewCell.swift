@@ -22,13 +22,12 @@ class StepDisplayTableViewCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        self.accessoryType = .disclosureIndicator
-        // Initialization code
     }
     
     override func prepareForReuse()
     {
         self.stepData = nil
+        self.simulatedStepData = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,7 +44,7 @@ class StepDisplayTableViewCell: UITableViewCell
             return
         }
         self.stepData = data
-        self.stepsLabel?.text = MotionService.formatNumberForLabel(data.numberOfSteps)
+        self.stepsLabel?.text = self.getStepsLabel(MotionService.formatNumberForLabel(data.numberOfSteps)!)
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
@@ -53,9 +52,15 @@ class StepDisplayTableViewCell: UITableViewCell
     func configureCellWithSimulatedData(_ data:MotionService.SimulatedData)
     {
         self.simulatedStepData = data
-        self.stepsLabel?.text = MotionService.formatNumberForLabel(data.numberOfSteps)
+        self.stepsLabel?.text = self.getStepsLabel(MotionService.formatNumberForLabel(data.numberOfSteps)!)
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
+    }
+    
+    func getStepsLabel(_ steps:String) -> String
+    {
+        let fullString = (steps == "1") ? "1 step" : steps + " Steps"
+        return fullString
     }
     
     func getFormattedDistance(_ distance:NSNumber?) -> String?

@@ -21,6 +21,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         static let cellNibName   = "StepDisplayTableViewCell"
         static let cellReuseId   = "StepDisplayCell"
         static let detailVCSegue = "showDetailVC"
+        static let cellHeight    = CGFloat(180.0)
     }
     
     override func viewDidLoad()
@@ -55,6 +56,11 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return Constants.cellHeight
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -63,14 +69,13 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // MARK: UITableViewDataSource
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // Would localize string if I had the resources for it
-        return "Steps"
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return Constants.numPreviousDays
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return Constants.numPreviousDays
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -79,10 +84,10 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         
         if MotionService.needToSimulateData
         {
-            let data = self.motionService.simulatedDataArr[indexPath.row]
+            let data = self.motionService.simulatedDataArr[indexPath.section]
             cell.configureCellWithSimulatedData(data)
         } else {
-            let data = self.motionService.dataArr[indexPath.row]
+            let data = self.motionService.dataArr[indexPath.section]
             cell.configureCellWithData(data)
         }
         return cell

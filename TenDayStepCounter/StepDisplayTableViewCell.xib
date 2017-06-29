@@ -6,64 +6,64 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StepDisplayCell" id="KGk-i7-Jjw" customClass="StepDisplayTableViewCell" customModule="TenDayStepCounter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StepDisplayCell" rowHeight="180" id="KGk-i7-Jjw" customClass="StepDisplayTableViewCell" customModule="TenDayStepCounter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="374" height="179.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Nr6-nB-Udw">
-                        <rect key="frame" x="20" y="0.0" width="280" height="44"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="STEPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dh-Nu-dsq">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="49a-CU-dh9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVI-fq-JXG">
-                                <rect key="frame" x="100" y="0.0" width="80" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Axt-Ga-heE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLo-g8-73n">
-                                <rect key="frame" x="200" y="0.0" width="80" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="ZO7-Q3-nrB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/29/17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLR-9j-Ir6" userLabel="dateLabel">
+                        <rect key="frame" x="0.0" y="0.0" width="67" height="40"/>
+                        <color key="backgroundColor" red="0.023606979717802772" green="0.12468427891563591" blue="0.59567276554404147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="9wY-Xa-Q9i"/>
+                            <constraint firstAttribute="width" constant="67" id="nwN-ZB-tVg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="6,786 Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID3-T6-FRe" userLabel="stepsLabel">
+                        <rect key="frame" x="8" y="60" width="358" height="62"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,791 m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMI-qI-Xb2" userLabel="distanceLabel">
+                        <rect key="frame" x="8" y="100" width="358" height="58"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Nr6-nB-Udw" secondAttribute="trailing" constant="20" id="4cl-gx-efc"/>
-                    <constraint firstItem="Nr6-nB-Udw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fuF-x7-8qE"/>
-                    <constraint firstAttribute="bottom" secondItem="Nr6-nB-Udw" secondAttribute="bottom" id="jcq-2A-Usp"/>
-                    <constraint firstItem="Nr6-nB-Udw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="v7M-2c-buN"/>
+                    <constraint firstItem="BLR-9j-Ir6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4ZW-mh-lhP"/>
+                    <constraint firstItem="ID3-T6-FRe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="52" id="A37-Bs-EMD"/>
+                    <constraint firstItem="wMI-qI-Xb2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="39.25" id="Eku-9v-q2T"/>
+                    <constraint firstItem="wMI-qI-Xb2" firstAttribute="top" secondItem="ID3-T6-FRe" secondAttribute="bottom" constant="-22" id="MZg-5m-aBA"/>
+                    <constraint firstItem="BLR-9j-Ir6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NCg-v5-yzQ"/>
+                    <constraint firstItem="ID3-T6-FRe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Rgc-mF-599"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="wMI-qI-Xb2" secondAttribute="trailing" id="ZEj-qg-W8a"/>
+                    <constraint firstItem="wMI-qI-Xb2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Zra-qY-C8y"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ID3-T6-FRe" secondAttribute="trailing" id="fYU-3I-BMD"/>
+                    <constraint firstItem="ID3-T6-FRe" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oLM-wD-fIq"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="wMI-qI-Xb2" secondAttribute="bottom" constant="13.5" id="sAa-CR-niP"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="dateLabel" destination="LLo-g8-73n" id="Q0u-5g-4Zn"/>
-                <outlet property="distanceLabel" destination="hVI-fq-JXG" id="teI-D2-VVK"/>
-                <outlet property="stepsLabel" destination="2dh-Nu-dsq" id="zk6-3a-DnI"/>
+                <outlet property="dateLabel" destination="BLR-9j-Ir6" id="OaR-QL-A5T"/>
+                <outlet property="distanceLabel" destination="wMI-qI-Xb2" id="9c0-pS-hjB"/>
+                <outlet property="stepsLabel" destination="ID3-T6-FRe" id="4XY-1E-pcS"/>
             </connections>
-            <point key="canvasLocation" x="44" y="59"/>
+            <point key="canvasLocation" x="87.5" y="127"/>
         </tableViewCell>
     </objects>
 </document>
