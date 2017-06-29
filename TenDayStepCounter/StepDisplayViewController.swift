@@ -91,6 +91,26 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     {
         let cellNib = UINib(nibName: Constants.cellNibName, bundle: Bundle.main)
         self.tableView?.register(cellNib, forCellReuseIdentifier: Constants.cellReuseId)
+        self.setUpRefreshControl()
+    }
+    
+    func setUpRefreshControl()
+    {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        
+        if #available(iOS 10.0, *)
+        {
+            self.tableView?.refreshControl = refreshControl
+        } else {
+            self.tableView?.backgroundView = refreshControl
+        }
+    }
+    
+    func refresh(_ refreshControl: UIRefreshControl)
+    {
+        self.tableView?.reloadData()
+        refreshControl.endRefreshing()
     }
 }
-
