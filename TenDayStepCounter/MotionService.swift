@@ -11,6 +11,10 @@ import CoreMotion
 
 class MotionService
 {
+    static var needToSimulateData:Bool {
+        return !CMPedometer.isStepCountingAvailable()
+    }
+    
     var calendar:Calendar {
         var calendar = Calendar.current
         calendar.timeZone = .current
@@ -18,11 +22,27 @@ class MotionService
     }
     
     var dataArr: Array<CMPedometerData> = []
+    var simulatedDataArr: Array<SimulatedData> = []
     let pedometer = CMPedometer()
     let queue = DispatchQueue(label: "StepCounterQueue", attributes: DispatchQueue.Attributes.concurrent)
     
+    struct SimulatedData {
+        var startDate:Date
+        var endDate:Date
+        var distance:NSNumber?
+        var numberOfSteps:NSNumber?
+        var averageActivePace:NSNumber?
+        var floorsAscended:NSNumber?
+        var floorsDescended:NSNumber?
+    }
+
     func getDailyStepDataUntilToday(_ numberOfDays:Int, dispatchGroup:DispatchGroup)
     {
+        if MotionService.needToSimulateData
+        {
+            NSLog("Step Counting not available on this device/simulator. Simulating data.")
+        }
+        
         let date = Date()
         for numberOfDaysInLoop in 0...(numberOfDays-1)
         {
@@ -52,7 +72,7 @@ class MotionService
     {
         guard let number = number else
         {
-            NSLog("\(#function): Attempted to use add comma to invalid number")
+            NSLog("\(#function): Attempted to add comma to invalid number")
             return nil
         }
         
@@ -74,20 +94,26 @@ class MotionService
         return metersFormatted
     }
     
-    static func getStringForPaceLabel(_ metersPerHour:NSNumber?) -> String?
+    static func getStringForPaceLabel(_ secondsPerMeter:NSNumber?) -> String?
     {
-        guard let metersPerHour = metersPerHour else
+        guard let secondsPerMeter = secondsPerMeter else
         {
             NSLog("\(#function): Attempted to convert invalid distance in meters to miles")
             return nil
         }
         
-        let metersPerHourFormatted = String(format: "%.2f mph",metersPerHour.floatValue)
-        return metersPerHourFormatted
+        let secondsPerMeterFormatted = String(format: "%.2f seconds/meter",secondsPerMeter.floatValue)
+        return secondsPerMeterFormatted
     }
     
     private func getStepDataForDates(_ start:Date, end:Date, dispatchGroup:DispatchGroup)
     {
+        if MotionService.needToSimulateData
+        {
+            self.simulateStepDataForQueryRange(from: start, to: end)
+            return
+        }
+        
         dispatchGroup.enter()
         self.pedometer.queryPedometerData(from: end, to: start, withHandler: { [weak self] (data, error) -> Void in
             guard let data = data else
@@ -102,6 +128,25 @@ class MotionService
             self?.dataArr.append(data)
             dispatchGroup.leave()
         })
+    }
+    
+    private func simulateStepDataForQueryRange(from:Date, to:Date)
+    {
+        let simulatedData_steps = Int(arc4random_uniform(8000)) + 2000
+        let simulatedData_distance = Double(simulatedData_steps) * 1.38 // arbitrary conversion constant
+        let simulatedData_pace = (from.timeIntervalSince(to)) / simulatedData_distance
+        let simulatedData_floorsUp = Int(arc4random_uniform(4))
+        let simulatedData_floorsDown = Int(arc4random_uniform(4))
+        
+        let simulatedData:SimulatedData = SimulatedData.init(startDate: from,
+                                                             endDate: to,
+                                                             distance: NSNumber(value:simulatedData_distance),
+                                                             numberOfSteps: NSNumber(value:simulatedData_steps),
+                                                             averageActivePace: NSNumber(value:simulatedData_pace),
+                                                             floorsAscended: NSNumber(value:simulatedData_floorsUp),
+                                                             floorsDescended: NSNumber(value:simulatedData_floorsDown))
+        
+        self.simulatedDataArr.append(simulatedData)
     }
     
     private func getEndDateForQueryRange(numDaysAgo:Int, currentDate:Date) -> Date?

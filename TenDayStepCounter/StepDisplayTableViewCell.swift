@@ -17,6 +17,7 @@ class StepDisplayTableViewCell: UITableViewCell
     @IBOutlet weak private var dateLabel: UILabel?
     
     private var stepData:CMPedometerData?
+    private var simulatedStepData:Any?
     
     override func awakeFromNib()
     {
@@ -49,6 +50,14 @@ class StepDisplayTableViewCell: UITableViewCell
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
     
+    func configureCellWithSimulatedData(_ data:MotionService.SimulatedData)
+    {
+        self.simulatedStepData = data
+        self.stepsLabel?.text = MotionService.addCommaToNumber(data.numberOfSteps)
+        self.distanceLabel?.text = self.getFormattedDistance(data.distance)
+        self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
+    }
+    
     func getFormattedDistance(_ distance:NSNumber?) -> String?
     {
         guard let distance = distance else
@@ -76,8 +85,13 @@ class StepDisplayTableViewCell: UITableViewCell
         return dateString
     }
     
-    func getStepData() -> CMPedometerData?
+    func getStepData() -> Any?
     {
-        return self.stepData
+        if MotionService.needToSimulateData
+        {
+            return self.simulatedStepData
+        } else {
+            return self.stepData
+        }
     }
 }

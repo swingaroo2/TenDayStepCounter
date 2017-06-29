@@ -15,6 +15,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     let motionService = MotionService()
     let dispatchGroup = DispatchGroup()
     
+    
     struct Constants {
         static let numPreviousDays = 10
         static let cellNibName   = "StepDisplayTableViewCell"
@@ -33,12 +34,19 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.motionService.getDailyStepDataUntilToday(Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
         
-        self.dispatchGroup.notify(queue: DispatchQueue.main, execute:{ [weak self] in
-            self?.tableView?.tableFooterView = UIView()
-            self?.tableView?.delegate = self
-            self?.tableView?.dataSource = self
-            self?.tableView?.reloadData()
-        })
+        if MotionService.needToSimulateData
+        {
+            self.tableView?.tableFooterView = UIView()
+            self.tableView?.delegate = self
+            self.tableView?.dataSource = self
+        } else {
+            self.dispatchGroup.notify(queue: DispatchQueue.main, execute:{ [weak self] in
+                self?.tableView?.tableFooterView = UIView()
+                self?.tableView?.delegate = self
+                self?.tableView?.dataSource = self
+                self?.tableView?.reloadData()
+            })
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -68,8 +76,15 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseId) as! StepDisplayTableViewCell
-        let data = self.motionService.dataArr[indexPath.row]
-        cell.configureCellWithData(data)
+        
+        if MotionService.needToSimulateData
+        {
+            let data = self.motionService.simulatedDataArr[indexPath.row]
+            cell.configureCellWithSimulatedData(data)
+        } else {
+            let data = self.motionService.dataArr[indexPath.row]
+            cell.configureCellWithData(data)
+        }
         return cell
     }
     
