@@ -9,7 +9,8 @@
 import UIKit
 import CoreMotion
 
-class StepDisplayTableViewCell: UITableViewCell {
+class StepDisplayTableViewCell: UITableViewCell
+{
     
     @IBOutlet weak private var stepsLabel: UILabel?
     @IBOutlet weak private var distanceLabel: UILabel?
@@ -17,19 +18,21 @@ class StepDisplayTableViewCell: UITableViewCell {
     
     private var stepData:CMPedometerData?
     
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         self.accessoryType = .disclosureIndicator
         // Initialization code
     }
-
-    override func prepareForReuse() {
+    
+    override func prepareForReuse()
+    {
         self.stepData = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -66,5 +69,10 @@ class StepDisplayTableViewCell: UITableViewCell {
         formatter.timeStyle = .none
         let dateString = formatter.string(from: date)
         return dateString
+    }
+    
+    func getStepData() -> CMPedometerData?
+    {
+        return self.stepData
     }
 }

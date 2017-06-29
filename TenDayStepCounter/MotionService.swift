@@ -16,7 +16,7 @@ class MotionService
         calendar.timeZone = TimeZone(abbreviation: "GMT")!
         return calendar
     }
-
+    
     var dataArr: Array<CMPedometerData> = []
     let pedometer = CMPedometer()
     let queue = DispatchQueue(label: "StepCounterQueue", attributes: DispatchQueue.Attributes.concurrent)
@@ -26,7 +26,7 @@ class MotionService
         
         for numberOfDaysInLoop in 0...(numberOfDays-1)
         {
-
+            
             guard let endDate = self.getEndDateForQueryRange(numDaysAgo: numberOfDaysInLoop) else
             {
                 NSLog("\(#function): Failed to get end date for query")
@@ -55,7 +55,7 @@ class MotionService
                 }
                 return
             }
-
+            
             self?.dataArr.append(data)
             dispatchGroup.leave()
         })

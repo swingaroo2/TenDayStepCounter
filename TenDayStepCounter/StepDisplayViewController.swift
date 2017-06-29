@@ -19,6 +19,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         static let numPreviousDays = 10
         static let cellNibName = "StepDisplayTableViewCell"
         static let cellReuseId = "StepDisplayCell"
+        static let detailVCSegue = "showDetailVC"
     }
     
     override func viewDidLoad()
@@ -26,6 +27,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         // Note: use simulated data for unsupported devices
+        // TODO: Add RefreshControl to TV to refresh step count data
         // Check if current device is supported
         
         self.setUpTableView()
@@ -39,7 +41,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
             self?.tableView?.reloadData()
         })
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -48,8 +50,9 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        print("Selected row at index path: \(indexPath)")
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! StepDisplayTableViewCell
+        self.performSegue(withIdentifier: Constants.detailVCSegue, sender: cell)
     }
     
     // MARK: UITableViewDataSource
@@ -69,6 +72,18 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         let data = self.motionService.dataArr[indexPath.row]
         cell.configureCellWithData(data)
         return cell
+    }
+    
+    // MARK: – Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == Constants.detailVCSegue
+        {
+            let cell = sender as! StepDisplayTableViewCell
+            let stepData = cell.getStepData()
+            let detailVC = segue.destination as! StepDisplayDetailViewController
+            detailVC.setPedometerData(stepData)
+        }
     }
     
     // MARK: - Helpers

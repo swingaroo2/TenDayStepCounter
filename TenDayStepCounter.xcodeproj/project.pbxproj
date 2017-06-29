@@ -19,6 +19,9 @@
 		922D6D471F01F5E00056AD8E /* MotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922D6D441F01F5E00056AD8E /* MotionService.swift */; };
 		9272E1151F02CA9F009435A3 /* StepDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9272E1131F02CA9F009435A3 /* StepDisplayTableViewCell.swift */; };
 		9272E1161F02CA9F009435A3 /* StepDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9272E1141F02CA9F009435A3 /* StepDisplayTableViewCell.xib */; };
+		9272E11D1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9272E11B1F046A5D009435A3 /* StepDisplayDetailViewController.swift */; };
+		9272E11E1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9272E11B1F046A5D009435A3 /* StepDisplayDetailViewController.swift */; };
+		9272E11F1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9272E11B1F046A5D009435A3 /* StepDisplayDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,7 @@
 		922D6D441F01F5E00056AD8E /* MotionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionService.swift; sourceTree = "<group>"; };
 		9272E1131F02CA9F009435A3 /* StepDisplayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		9272E1141F02CA9F009435A3 /* StepDisplayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		9272E11B1F046A5D009435A3 /* StepDisplayDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepDisplayDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,15 +109,10 @@
 		920B13261F01DBE100656A54 /* TenDayStepCounter */ = {
 			isa = PBXGroup;
 			children = (
-				920B13271F01DBE100656A54 /* AppDelegate.swift */,
-				920B13291F01DBE100656A54 /* StepDisplayViewController.swift */,
-				920B132B1F01DBE100656A54 /* Main.storyboard */,
+				92C1FE531F046CF20024B35D /* Swift Code */,
+				92C1FE541F046D0A0024B35D /* Interface Builder */,
 				920B132E1F01DBE100656A54 /* Assets.xcassets */,
-				920B13301F01DBE100656A54 /* LaunchScreen.storyboard */,
 				920B13331F01DBE100656A54 /* Info.plist */,
-				922D6D441F01F5E00056AD8E /* MotionService.swift */,
-				9272E1131F02CA9F009435A3 /* StepDisplayTableViewCell.swift */,
-				9272E1141F02CA9F009435A3 /* StepDisplayTableViewCell.xib */,
 			);
 			path = TenDayStepCounter;
 			sourceTree = "<group>";
@@ -134,6 +133,28 @@
 				920B13491F01DBE100656A54 /* Info.plist */,
 			);
 			path = TenDayStepCounterUITests;
+			sourceTree = "<group>";
+		};
+		92C1FE531F046CF20024B35D /* Swift Code */ = {
+			isa = PBXGroup;
+			children = (
+				920B13271F01DBE100656A54 /* AppDelegate.swift */,
+				922D6D441F01F5E00056AD8E /* MotionService.swift */,
+				9272E11B1F046A5D009435A3 /* StepDisplayDetailViewController.swift */,
+				9272E1131F02CA9F009435A3 /* StepDisplayTableViewCell.swift */,
+				920B13291F01DBE100656A54 /* StepDisplayViewController.swift */,
+			);
+			name = "Swift Code";
+			sourceTree = "<group>";
+		};
+		92C1FE541F046D0A0024B35D /* Interface Builder */ = {
+			isa = PBXGroup;
+			children = (
+				920B13301F01DBE100656A54 /* LaunchScreen.storyboard */,
+				920B132B1F01DBE100656A54 /* Main.storyboard */,
+				9272E1141F02CA9F009435A3 /* StepDisplayTableViewCell.xib */,
+			);
+			name = "Interface Builder";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +299,7 @@
 				920B13281F01DBE100656A54 /* AppDelegate.swift in Sources */,
 				9272E1151F02CA9F009435A3 /* StepDisplayTableViewCell.swift in Sources */,
 				922D6D451F01F5E00056AD8E /* MotionService.swift in Sources */,
+				9272E11D1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9272E11E1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */,
 				920B133D1F01DBE100656A54 /* TenDayStepCounterTests.swift in Sources */,
 				922D6D461F01F5E00056AD8E /* MotionService.swift in Sources */,
 			);
@@ -294,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9272E11F1F046A5D009435A3 /* StepDisplayDetailViewController.swift in Sources */,
 				920B13481F01DBE100656A54 /* TenDayStepCounterUITests.swift in Sources */,
 				922D6D471F01F5E00056AD8E /* MotionService.swift in Sources */,
 			);
