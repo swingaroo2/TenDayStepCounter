@@ -21,7 +21,7 @@ class MotionService
     let pedometer = CMPedometer()
     let queue = DispatchQueue(label: "StepCounterQueue", attributes: DispatchQueue.Attributes.concurrent)
     
-    func getDailyStepDataUntilToday(numberOfDays:Int, dispatchGroup:DispatchGroup)
+    func getDailyStepDataUntilToday(_ numberOfDays:Int, dispatchGroup:DispatchGroup)
     {
         
         for numberOfDaysInLoop in 0...(numberOfDays-1)
@@ -41,6 +41,44 @@ class MotionService
             
             self.getStepDataForDates(startDate, end: endDate, dispatchGroup: dispatchGroup)
         }
+    }
+    
+    static func getStringForStepsLabel(_ steps:NSNumber?) -> String?
+    {
+        guard let steps = steps else
+        {
+            NSLog("\(#function): Attempted to use invalid number of steps")
+            return nil
+        }
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let stepsFormatted = formatter.string(from: steps)
+        return stepsFormatted
+    }
+    
+    static func getStringForDistanceLabel(_ meters:NSNumber?) -> String?
+    {
+        guard let meters = meters else
+        {
+            NSLog("\(#function): Attempted to convert invalid distance in meters to miles")
+            return nil
+        }
+        
+        let metersFormatted = String(format: "%.2f meters",meters.floatValue)
+        return metersFormatted
+    }
+    
+    static func getStringForPaceLabel(_ metersPerHour:NSNumber?) -> String?
+    {
+        guard let metersPerHour = metersPerHour else
+        {
+            NSLog("\(#function): Attempted to convert invalid distance in meters to miles")
+            return nil
+        }
+        
+        let metersPerHourFormatted = String(format: "%.2f mph",metersPerHour.floatValue)
+        return metersPerHourFormatted
     }
     
     private func getStepDataForDates(_ start:Date, end:Date, dispatchGroup:DispatchGroup)

@@ -32,7 +32,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.setUpTableView()
         
-        self.motionService.getDailyStepDataUntilToday(numberOfDays: Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
+        self.motionService.getDailyStepDataUntilToday(Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
         
         self.dispatchGroup.notify(queue: DispatchQueue.main, execute:{ [weak self] in
             self?.tableView?.tableFooterView = UIView()
