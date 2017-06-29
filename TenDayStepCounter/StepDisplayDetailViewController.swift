@@ -64,11 +64,18 @@ class StepDisplayDetailViewController: UIViewController
  
     func getFormattedDateStringForTitle(_ date:Date) -> String?
     {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        let dateString = formatter.string(from: date)
-        return dateString
+        if Calendar.current.isDateInToday(date)
+        {
+            return "Today"
+        } else if Calendar.current.isDateInYesterday(date) {
+            return "Yesterday"
+        } else {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            let dateString = formatter.string(from: date)
+            return dateString
+        }
     }
     
     func setLabelsWithData(_ data:Any?)

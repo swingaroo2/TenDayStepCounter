@@ -19,12 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="374" height="179.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/29/17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLR-9j-Ir6" userLabel="dateLabel">
-                        <rect key="frame" x="0.0" y="0.0" width="67" height="40"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLR-9j-Ir6" userLabel="dateLabel">
+                        <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
                         <color key="backgroundColor" red="0.023606979717802772" green="0.12468427891563591" blue="0.59567276554404147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="9wY-Xa-Q9i"/>
-                            <constraint firstAttribute="width" constant="67" id="nwN-ZB-tVg"/>
+                            <constraint firstAttribute="width" constant="90" id="Ran-vU-uNY"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
