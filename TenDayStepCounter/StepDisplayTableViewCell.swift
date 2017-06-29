@@ -44,7 +44,7 @@ class StepDisplayTableViewCell: UITableViewCell
             return
         }
         self.stepData = data
-        self.stepsLabel?.text = data.numberOfSteps.description
+        self.stepsLabel?.text = MotionService.addCommaToNumber(data.numberOfSteps)
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
@@ -56,8 +56,14 @@ class StepDisplayTableViewCell: UITableViewCell
             return nil
         }
         
-        let formattedDistance = Int(floor(distance.doubleValue)).description
-        let fullString = "\(formattedDistance) m"
+        let formattedDistance = Int(floor(distance.doubleValue))
+        guard let distanceString = MotionService.addCommaToNumber(formattedDistance as NSNumber) else
+        {
+            NSLog("\(#function) Invalid distance string")
+            return nil
+        }
+        
+        let fullString = distanceString + "m"
         return fullString
     }
     

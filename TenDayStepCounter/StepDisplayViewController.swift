@@ -27,7 +27,6 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         // Note: use simulated data for unsupported devices
-        // TODO: Add RefreshControl to TV to refresh step count data
         // Check if current device is supported
         
         self.setUpTableView()

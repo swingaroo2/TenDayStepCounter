@@ -44,16 +44,22 @@ class MotionService
     
     static func getStringForStepsLabel(_ steps:NSNumber?) -> String?
     {
-        guard let steps = steps else
+        let stepsString = MotionService.addCommaToNumber(steps)
+        return stepsString
+    }
+    
+    static func addCommaToNumber(_ number:NSNumber?) -> String?
+    {
+        guard let number = number else
         {
-            NSLog("\(#function): Attempted to use invalid number of steps")
+            NSLog("\(#function): Attempted to use add comma to invalid number")
             return nil
         }
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        let stepsFormatted = formatter.string(from: steps)
-        return stepsFormatted
+        let numberFormatted = formatter.string(from: number)
+        return numberFormatted
     }
     
     static func getStringForDistanceLabel(_ meters:NSNumber?) -> String?
