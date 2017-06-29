@@ -17,8 +17,8 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     
     struct Constants {
         static let numPreviousDays = 10
-        static let cellNibName = "StepDisplayTableViewCell"
-        static let cellReuseId = "StepDisplayCell"
+        static let cellNibName   = "StepDisplayTableViewCell"
+        static let cellReuseId   = "StepDisplayCell"
         static let detailVCSegue = "showDetailVC"
     }
     

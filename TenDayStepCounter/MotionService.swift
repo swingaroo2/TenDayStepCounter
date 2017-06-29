@@ -13,7 +13,7 @@ class MotionService
 {
     var calendar:Calendar {
         var calendar = Calendar.current
-        calendar.timeZone = TimeZone(abbreviation: "GMT")!
+        calendar.timeZone = .current
         return calendar
     }
     
@@ -23,11 +23,10 @@ class MotionService
     
     func getDailyStepDataUntilToday(_ numberOfDays:Int, dispatchGroup:DispatchGroup)
     {
-        
+        let date = Date()
         for numberOfDaysInLoop in 0...(numberOfDays-1)
         {
-            
-            guard let endDate = self.getEndDateForQueryRange(numDaysAgo: numberOfDaysInLoop) else
+            guard let endDate = self.getEndDateForQueryRange(numDaysAgo: numberOfDaysInLoop, currentDate: date) else
             {
                 NSLog("\(#function): Failed to get end date for query")
                 return
@@ -99,16 +98,16 @@ class MotionService
         })
     }
     
-    private func getEndDateForQueryRange(numDaysAgo:Int) -> Date?
+    private func getEndDateForQueryRange(numDaysAgo:Int, currentDate:Date) -> Date?
     {
-        guard let endDate = self.calendar.date(byAdding: .day, value: -numDaysAgo, to: Date()) else
+        guard let endDate = self.calendar.date(byAdding: .day, value: -numDaysAgo, to: currentDate) else
         {
             NSLog("\(#function): Failed to get end date for query range")
             return nil
         }
         
-        let toDateFormatted = self.calendar.startOfDay(for: endDate)
-        return toDateFormatted
+        let endDateFormatted = self.calendar.startOfDay(for: endDate)
+        return endDateFormatted
     }
     
     private func getStartDateForQueryRange(_ date:Date) -> Date?

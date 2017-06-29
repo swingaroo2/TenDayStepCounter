@@ -43,7 +43,6 @@ class StepDisplayTableViewCell: UITableViewCell
             NSLog("Invalid pedometer data")
             return
         }
-        
         self.stepData = data
         self.stepsLabel?.text = data.numberOfSteps.description
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
