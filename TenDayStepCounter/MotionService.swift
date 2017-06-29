@@ -64,11 +64,11 @@ class MotionService
     
     static func getStringForStepsLabel(_ steps:NSNumber?) -> String?
     {
-        let stepsString = MotionService.addCommaToNumber(steps)
+        let stepsString = MotionService.formatNumberForLabel(steps)
         return stepsString
     }
     
-    static func addCommaToNumber(_ number:NSNumber?) -> String?
+    static func formatNumberForLabel(_ number:NSNumber?) -> String?
     {
         guard let number = number else
         {
@@ -77,6 +77,8 @@ class MotionService
         }
         
         let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
         formatter.numberStyle = .decimal
         let numberFormatted = formatter.string(from: number)
         return numberFormatted
@@ -84,14 +86,15 @@ class MotionService
     
     static func getStringForDistanceLabel(_ meters:NSNumber?) -> String?
     {
-        guard let meters = meters else
+        guard let metersFormatted = MotionService.formatNumberForLabel(meters) else
         {
             NSLog("\(#function): Attempted to convert invalid distance in meters to miles")
             return nil
         }
         
-        let metersFormatted = String(format: "%.2f meters",meters.floatValue)
-        return metersFormatted
+        let metersFormattedString = metersFormatted.description + "m"
+        
+        return metersFormattedString
     }
     
     static func getStringForPaceLabel(_ secondsPerMeter:NSNumber?) -> String?

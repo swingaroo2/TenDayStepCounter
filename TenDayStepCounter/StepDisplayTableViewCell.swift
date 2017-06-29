@@ -45,7 +45,7 @@ class StepDisplayTableViewCell: UITableViewCell
             return
         }
         self.stepData = data
-        self.stepsLabel?.text = MotionService.addCommaToNumber(data.numberOfSteps)
+        self.stepsLabel?.text = MotionService.formatNumberForLabel(data.numberOfSteps)
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
@@ -53,7 +53,7 @@ class StepDisplayTableViewCell: UITableViewCell
     func configureCellWithSimulatedData(_ data:MotionService.SimulatedData)
     {
         self.simulatedStepData = data
-        self.stepsLabel?.text = MotionService.addCommaToNumber(data.numberOfSteps)
+        self.stepsLabel?.text = MotionService.formatNumberForLabel(data.numberOfSteps)
         self.distanceLabel?.text = self.getFormattedDistance(data.distance)
         self.dateLabel?.text = self.getFormattedStartDate(data.endDate)
     }
@@ -66,7 +66,7 @@ class StepDisplayTableViewCell: UITableViewCell
         }
         
         let formattedDistance = Int(floor(distance.doubleValue))
-        guard let distanceString = MotionService.addCommaToNumber(formattedDistance as NSNumber) else
+        guard let distanceString = MotionService.formatNumberForLabel(formattedDistance as NSNumber) else
         {
             NSLog("\(#function) Invalid distance string")
             return nil
