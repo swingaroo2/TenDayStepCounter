@@ -15,7 +15,6 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     let motionService = MotionService()
     let dispatchGroup = DispatchGroup()
     
-    
     struct Constants {
         static let numPreviousDays = 10
         static let cellNibName   = "StepDisplayTableViewCell"
@@ -27,10 +26,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // Note: use simulated data for unsupported devices
-        // Check if current device is supported
-        
+
         self.setUpTableView()
         
         self.motionService.getDailyStepDataUntilToday(Constants.numPreviousDays, dispatchGroup: self.dispatchGroup)
@@ -86,6 +82,7 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         {
             let data = self.motionService.simulatedDataArr[indexPath.section]
             cell.configureCellWithSimulatedData(data)
+
         } else {
             let data = self.motionService.dataArr[indexPath.section]
             cell.configureCellWithData(data)
@@ -127,9 +124,13 @@ class StepDisplayViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func refresh(_ refreshControl: UIRefreshControl)
+    @objc func refresh(_ refreshControl: UIRefreshControl)
     {
         self.tableView?.reloadData()
         refreshControl.endRefreshing()
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.tableView?.reloadData()
     }
 }
